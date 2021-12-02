@@ -10,4 +10,6 @@ Initial plan is for a blog post linking to this repo that shows:
  - Deploy the model using Deployments
  - Send some inference data to the model
 
+A key component of this is to show that *models created in Gradient can be deployed in Gradient*. This better tests our system and shows more value than only bringing in an outside model.
+
 Then we can show lots of other things, e.g., canary deployments.
