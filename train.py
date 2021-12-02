@@ -4,7 +4,7 @@ import numpy as np
 import os
 import argparse
 
-tf.logging.set_verbosity(tf.logging.ERROR)
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 #Input parameters
 MODEL_DIR = os.path.abspath(os.environ.get('MODEL_DIR', os.getcwd() + '/models'))
@@ -35,9 +35,10 @@ model.summary()
 epochs = int(os.getenv("EPOCHS",1))
 
 #Compile and fit
-model.compile(optimizer=tf.train.AdamOptimizer(), 
-              loss='sparse_categorical_crossentropy',
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
+
 model.fit(train_images, train_labels, epochs=epochs)
 
 #Check accuracy
@@ -48,10 +49,7 @@ print('\nModel accuracy: {}'.format(test_acc))
 export_path = os.path.join(MODEL_DIR)
 print('export_path = {}\n'.format(export_path))
 
-tf.saved_model.simple_save(
-   keras.backend.get_session(),
-   export_path,
-   inputs={'input_image': model.input},
-   outputs={t.name:t for t in model.outputs})
+model.save(MODEL_DIR)
 
 print('\nModel saved to ' + MODEL_DIR)
+
