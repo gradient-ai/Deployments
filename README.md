@@ -4,9 +4,9 @@ Last updated: Dec 07th 2021
 
 This is our basic example of Deployments in Gradient, showing how to
 
- - Create a TensorFlow model using Workflows
+ - Create and train a TensorFlow deep learning model using Workflows
  - Deploy the model using Deployments
- - Send some inference data to the model
+ - Send inference data to the model and receive correct output
 
 A key component of this is to show that *models created in Gradient can be deployed in Gradient*.
 
