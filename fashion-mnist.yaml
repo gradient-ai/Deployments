@@ -1,0 +1,46 @@
+defaults:
+  env:
+    apiKey: secret:api_key
+  resources:
+    instance-type: C5
+jobs:
+  CloneRepo:
+    outputs:
+      repo:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/gradient-ai/Deployments.git
+  TrainModel:
+    env:
+      EPOCHS: "3"
+      MODEL_DIR: /trained-model/1
+    needs:
+      - CloneRepo
+    inputs:
+      repo: CloneRepo.outputs.repo
+    outputs:
+      trained-model:
+        type: dataset
+        with:
+          ref: fashion-mnist
+    uses: container@v1
+    with:
+      args:
+        - bash
+        - "-c"
+        - >-
+          cd /inputs/repo && python train.py && cp -R /trained-model /outputs/trained-model
+      image: 'nvcr.io/nvidia/tensorflow:21.09-tf2-py3'
+  UploadModel:
+    inputs:
+      model: TrainModel.outputs.trained-model
+    outputs:
+      model-id:
+        type: string
+    needs:
+      - TrainModel
+    uses: create-model@v1
+    with:
+      name: trained-model
+      type: Tensorflow
