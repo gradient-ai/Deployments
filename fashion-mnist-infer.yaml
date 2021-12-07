@@ -6,7 +6,7 @@
 # 2: Deploy the model using Deployments
 # 3: Send inference data to the model and receive correct output
 #
-# This Workflow corresponds to step 1 of the above, and calls train.py to do the model training
+# This Workflow corresponds to step 3 of the above, and calls infer.py to send inference data to the model
 #
 # Last updated: Dec 07th 2021
 
@@ -14,7 +14,7 @@ defaults:
   env:
     apiKey: secret:api_key
   resources:
-    instance-type: C5
+    instance-type: C4
 
 jobs:
 
@@ -26,37 +26,18 @@ jobs:
     with:
       url: https://github.com/gradient-ai/Deployments.git
 
-  TrainModel:
+  SendInferenceData:
     env:
-      EPOCHS: "3"
-      MODEL_DIR: /trained-model/1
+      SERVE_URL: "<add your serving URL from step 2 here>"
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-    outputs:
-      trained-model:
-        type: dataset
-        with:
-          ref: fashion-mnist
     uses: container@v1
     with:
       args:
         - bash
         - "-c"
         - >-
-          cd /inputs/repo && python train.py && cp -R /trained-model /outputs/trained-model
+          cd /inputs/repo && python infer.py
       image: 'nvcr.io/nvidia/tensorflow:21.09-tf2-py3'
-
-  UploadModel:
-    inputs:
-      model: TrainModel.outputs.trained-model
-    outputs:
-      model-id:
-        type: string
-    needs:
-      - TrainModel
-    uses: create-model@v1
-    with:
-      name: trained-model
-      type: Tensorflow
