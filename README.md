@@ -21,37 +21,41 @@ A key component of this is to show that *models created in Gradient can be deplo
 
 This creates a TensorFlow 2.6 model using the Fashion-MNIST dataset. Our purpose here is to show working deployments so we do not attempt anything large or complicated.
 
-Run the Workflow fashion-mnist.yaml in the usual way Workflows are run on Gradient:
+Run the Workflow `fashion-mnist.yaml` in the usual way Workflows are run on Gradient:
 
- - Clone this repo
- - Create Project
- - Create Workflow and get its ID
- - Create output Dataset
- - Invoke the Workflow on the command line: `gradient workflows run --id <Workflow ID> --path fashion-mnist.yaml`
+ - Clone this repo to your machine: `git clone https://github.com/gradient-ai/Deployments`
+ - Create a Project `Fashion MNIST` and get its ID
+ - Create a Workflow `fashion-mnist` within the Project, and get its ID
+ - Create a Dataset `fashion-mnist` within the Project
+ - Invoke the Workflow on the command line: `gradient workflows run --id <Your Workflow ID> --path fashion-mnist.yaml`
+
+For information on creating Projects, Workflows, Datasets, and setting up the CLI, refer to the [Gradient documentation](https://docs.paperspace.com/gradient/) or [tutorials](https://docs.paperspace.com/gradient/get-started/tutorials-list).
 
 ### 2. Deploy the model using Deployments
 
 This deploys the model from step 1 and makes it ready to receive inference data.
 
- - Add model ID from step 1 to the model spec file `fashion-mnist-spec.yaml`
- - Invoke the Deployment from the command line: `gradient deployments create --name fashion-mnist --projectId <Project ID> --spec fashion-mnist-deployment-spec.yaml`
+ - Add the model ID from the trained model in step 1 to your copy of the model spec file `fashion-mnist-spec.yaml` from the cloned repo
+ - Invoke the Deployment from the command line: `gradient deployments create --name fashion-mnist --projectId <Your Project ID> --spec fashion-mnist-deployment-spec.yaml`
 
 The resulting deployment is visible in the GUI under the Deployments tab for your project.
  
 ### 3. Send inference data to the model
 
-We need to send 784*784 pixel Fashion-MNIST images to the model, so this is more easily done by script than on the command line.
+We need to send 784x784 pixel Fashion-MNIST images to the model, so this is more easily done by script than on the command line.
  
 We therefore call the script using another Workflow:
 
- - Create Workflow and get its ID
- - Invoke the Workflow in the same way as step 1, but with the YAML file for this step: `gradient workflows run --id <Workflow ID> --path fashion-mnist-inference.yaml`
+ - Create Workflow `fashion-mnist-infer` within your Project, and get its ID
+ - Invoke the Workflow in the same way as step 1, but with the Workflow ID and YAML file for this step: `gradient workflows run --id <Your Workflow ID> --path fashion-mnist-infer.yaml`
 
-For this inference data, the true classes are also available, so the output will show the true class and the model's predicted class for each image.
+For this inference data, the true classes are also available, so the output will show the true class and the model's predicted class for each image. They should be mostly the same.
 
 ## Next Steps
 
-Gradient Deployments contain more than shown here, and we are rapidly adding functionality. In future material we plan to show
+Gradient Deployments contain more than shown here, and we are rapidly adding functionality. 
+
+In future material what we plan to show includes:
 
 - Create deployment in a Workflow
 - Invoke deployment via SDK
