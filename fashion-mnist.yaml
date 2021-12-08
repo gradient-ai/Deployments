@@ -38,14 +38,8 @@ jobs:
         type: dataset
         with:
           ref: fashion-mnist
-    #uses: container@v1
     uses: script@v1
     with:
-      #args:
-      #  - bash
-      #  - "-c"
-      #  - >-
-      #    cd /inputs/repo && python train.py && cp -R /trained-model /outputs/trained-model
       script: |-
         cd /inputs/repo
         python train.py
