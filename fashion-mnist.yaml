@@ -17,7 +17,6 @@ defaults:
     instance-type: C5
 
 jobs:
-
   CloneRepo:
     outputs:
       repo:
@@ -39,13 +38,18 @@ jobs:
         type: dataset
         with:
           ref: fashion-mnist
-    uses: container@v1
+    #uses: container@v1
+    uses: script@v1
     with:
-      args:
-        - bash
-        - "-c"
-        - >-
-          cd /inputs/repo && python train.py && cp -R /trained-model /outputs/trained-model
+      #args:
+      #  - bash
+      #  - "-c"
+      #  - >-
+      #    cd /inputs/repo && python train.py && cp -R /trained-model /outputs/trained-model
+      script: |-
+        cd /inputs/repo
+        python train.py
+        cp -R /trained-model /outputs/trained-model
       image: 'nvcr.io/nvidia/tensorflow:21.09-tf2-py3'
 
   UploadModel:

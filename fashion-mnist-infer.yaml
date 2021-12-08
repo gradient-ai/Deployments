@@ -17,7 +17,6 @@ defaults:
     instance-type: C4
 
 jobs:
-
   CloneRepo:
     outputs:
       repo:
@@ -33,11 +32,15 @@ jobs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-    uses: container@v1
+    #uses: container@v1
+    uses: script@v1
     with:
-      args:
-        - bash
-        - "-c"
-        - >-
-          cd /inputs/repo && python infer.py
+      #args:
+      #  - bash
+      #  - "-c"
+      #  - >-
+      #    cd /inputs/repo && python infer.py
+      script: |-
+        cd /inputs/repo
+        python infer.py
       image: 'nvcr.io/nvidia/tensorflow:21.09-tf2-py3'

@@ -1,10 +1,21 @@
+# Gradient Deployments: Fashion-MNIST Example
+#
+# This is part of our basic deployments example (https://github.com/gradient-ai/Deployments) that shows
+#
+# 1: Create and train a TensorFlow deep learning model using Workflows
+# 2: Deploy the model using Deployments
+# 3: Send inference data to the model and receive correct output
+#
+# This script is part of step 1 and is called from the Workflow. It does the model training.
+# It is based on content from our Workflows tutorial at https://github.com/gradient-ai/fashionmnist
+#
+# Last updated: Dec 07th 2021
+
 import tensorflow as tf
 from tensorflow import keras
-import numpy as np
 import os
-import argparse
 
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+#tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 #Input parameters
 MODEL_DIR = os.path.abspath(os.environ.get('MODEL_DIR', os.getcwd() + '/models'))
@@ -52,4 +63,3 @@ print('export_path = {}\n'.format(export_path))
 model.save(MODEL_DIR)
 
 print('\nModel saved to ' + MODEL_DIR)
-

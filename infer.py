@@ -1,4 +1,16 @@
-import tensorflow as tf
+# Gradient Deployments: Fashion-MNIST Example
+#
+# This is part of our basic deployments example (https://github.com/gradient-ai/Deployments) that shows
+#
+# 1: Create and train a TensorFlow deep learning model using Workflows
+# 2: Deploy the model using Deployments
+# 3: Send inference data to the model and receive correct output
+#
+# This script is part of step 3 and is called from the Workflow. It sends inference data to tthe model.
+# It is based on content from our Workflows tutorial at https://github.com/gradient-ai/fashionmnist
+#
+# Last updated: Dec 07th 2021
+
 from tensorflow import keras
 import numpy as np
 import os
