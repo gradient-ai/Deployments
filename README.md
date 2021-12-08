@@ -47,6 +47,7 @@ We need to send 784x784 pixel Fashion-MNIST images to the model, so this is more
 We therefore call the script using another Workflow:
 
  - Create Workflow `fashion-mnist-infer` within your Project, and get its ID
+ - Add the serve URL to `fashion-mnist-infer.yaml`. This will be of the form `<endpoint>/v1/models/trained-model:predict`, where the endpoint is shown in the Gradient GUI detail page for the deployment created in step 2.
  - Invoke the Workflow in the same way as step 1, but with the Workflow ID and YAML file for this step: `gradient workflows run --id <Your Workflow ID> --path fashion-mnist-infer.yaml`
 
 For this inference data, the true classes are also available, so the output will show the true class and the model's predicted class for each image. They should be mostly the same.
