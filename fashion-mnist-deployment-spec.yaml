@@ -13,7 +13,7 @@
 image: tensorflow/serving
 port: 8501
 models:
-  id: <add your model ID from step 1 here>
+  id: ... # Add your model ID from step 1 here. The model ID can be seen under the Models tab in the Gradient GUI.
   path: "/opt/models/trained-model/"
 env:
   - name: MODEL_BASE_PATH

@@ -27,19 +27,15 @@ jobs:
 
   SendInferenceData:
     env:
-      SERVE_URL: "<add your serving URL from step 2 here>"
+      SERVE_URL: "..." # Add your serving URL from step 2 here. This will be of the form
+      # `<endpoint>/v1/models/trained-model:predict`,
+      # where the endpoint is shown in the Gradient GUI detail page for the deployment.
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-    #uses: container@v1
     uses: script@v1
     with:
-      #args:
-      #  - bash
-      #  - "-c"
-      #  - >-
-      #    cd /inputs/repo && python infer.py
       script: |-
         cd /inputs/repo
         python infer.py
