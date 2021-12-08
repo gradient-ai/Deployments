@@ -31,6 +31,10 @@ Run the Workflow `fashion-mnist.yaml` in the usual way Workflows are run on Grad
 
 For information on creating Projects, Workflows, Datasets, and setting up the CLI, refer to the [Gradient documentation](https://docs.paperspace.com/gradient/) or [tutorials](https://docs.paperspace.com/gradient/get-started/tutorials-list).
 
+Your trained model detail page will look like this:
+
+![model_in_gui](https://user-images.githubusercontent.com/74800360/145128740-89ea8d46-861f-40c2-aa3b-afe26c09479f.png)
+
 ### 2. Deploy the model using Deployments
 
 This deploys the model from step 1 and makes it ready to receive inference data.
@@ -39,6 +43,10 @@ This deploys the model from step 1 and makes it ready to receive inference data.
  - Invoke the Deployment from the command line: `gradient deployments create --name fashion-mnist --projectId <Your Project ID> --spec fashion-mnist-deployment-spec.yaml`
 
 The resulting deployment is visible in the GUI under the Deployments tab for your project.
+
+The deployment detail page will look like this:
+
+![deployment_in_gui](https://user-images.githubusercontent.com/74800360/145128884-c8c5ff4c-af66-4e4f-af5e-92ac7cd74eb1.png)
  
 ### 3. Send inference data to the model
 
@@ -50,7 +58,9 @@ We therefore call the script using another Workflow:
  - Add the serve URL to `fashion-mnist-infer.yaml`. This will be of the form `<endpoint>/v1/models/trained-model:predict`, where the endpoint is shown in the Gradient GUI detail page for the deployment created in step 2.
  - Invoke the Workflow in the same way as step 1, but with the Workflow ID and YAML file for this step: `gradient workflows run --id <Your Workflow ID> --path fashion-mnist-infer.yaml`
 
-For this inference data, the true classes are also available, so the output will show the true class and the model's predicted class for each image. They should be mostly the same.
+For this inference data, the true classes are also available, so the output will show the true class and the model's predicted class for each image. They should be mostly (or all) the same, as in:
+
+![predictions](https://user-images.githubusercontent.com/74800360/145129006-176733eb-683b-4557-80bf-170f0bb64083.png)
 
 ## Next Steps
 
