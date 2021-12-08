@@ -14,7 +14,7 @@ defaults:
   env:
     apiKey: secret:api_key
   resources:
-    instance-type: C5
+    instance-type: C4
 
 jobs:
   CloneRepo:
