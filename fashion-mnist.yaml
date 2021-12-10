@@ -8,7 +8,7 @@
 #
 # This Workflow corresponds to step 1 of the above, and calls train.py to do the model training
 #
-# Last updated: Dec 07th 2021
+# Last updated: Dec 10th 2021
 
 defaults:
   env:
@@ -23,7 +23,7 @@ jobs:
         type: volume
     uses: git-checkout@v1
     with:
-      url: https://github.com/gradient-ai/Deployments.git
+      url: https://github.com/gradient-ai/Deployments-Create-Deploy-Infer.git
 
   TrainModel:
     env:

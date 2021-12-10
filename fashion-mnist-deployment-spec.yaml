@@ -8,7 +8,7 @@
 #
 # This Workflow corresponds to step 2 of the above, and specifies the model that we will deploy
 #
-# Last updated: Dec 07th 2021
+# Last updated: Dec 10th 2021
 
 image: tensorflow/serving
 port: 8501
