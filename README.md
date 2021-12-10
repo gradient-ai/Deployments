@@ -1,6 +1,6 @@
 # Deployments
 
-Last updated: Dec 07th 2021
+Last updated: Dec 10th 2021
 
 This is our basic example of Deployments in Gradient, showing how to
 
@@ -23,7 +23,7 @@ This creates a TensorFlow 2.6 model using the Fashion-MNIST dataset. Our purpose
 
 Run the Workflow `fashion-mnist.yaml` in the usual way Workflows are run on Gradient:
 
- - Clone this repo to your machine: `git clone https://github.com/gradient-ai/Deployments`
+ - Clone this repo to your machine: `git clone https://github.com/gradient-ai/Deployments-Create-Deploy-Infer`
  - Create a Project `Fashion MNIST` and get its ID
  - Create a Workflow `fashion-mnist` within the Project, and get its ID
  - Create a Dataset `fashion-mnist` within the Project
