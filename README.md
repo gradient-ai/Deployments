@@ -74,4 +74,4 @@ In future material what we plan to show includes:
 - Canary deployments
 - Trigger deployment via our GitHub-repo-linked projects
 
-For more details about what is current supported in Deployments, see the [documentation](https://docs.paperspace.com/gradient/explore-train-deploy/deployments).
+For more details about what is currently supported in Deployments, see the [documentation](https://docs.paperspace.com/gradient/explore-train-deploy/deployments).
