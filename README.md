@@ -12,8 +12,8 @@ A key component of this is to show that *models created in Gradient can be deplo
 
 ## See also
 
-- Blog entry
-- Deployments documentation
+- [Blog entry](https://blog.paperspace.com/notebooks-workflows-and-now-deployments/)
+- [Deployments documentation](https://docs.paperspace.com/gradient/explore-train-deploy/deployments)
 
 ## How to run
 
