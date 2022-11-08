@@ -39,7 +39,7 @@ Your trained model detail page will look like this:
 
 This deploys the model from step 1 and makes it ready to receive inference data.
 
- - Add the model ID from the trained model in step 1 to your copy of the model spec file `fashion-mnist-spec.yaml` from the cloned repo
+ - Add the model ID from the trained model in step 1 to your copy of the model spec file `fashion-mnist-deployment-spec.yaml` from the cloned repo
  - Invoke the Deployment from the command line: `gradient deployments create --name fashion-mnist --projectId <Your Project ID> --spec fashion-mnist-deployment-spec.yaml`
 
 The resulting deployment is visible in the GUI under the Deployments tab for your project.
